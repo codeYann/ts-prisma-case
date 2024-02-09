@@ -20,9 +20,12 @@
 	"devDependencies": {
 		"@types/node": "20.11.17",
 		"prettier": "3.2.5",
-		"prisma": "^5.9.1",
+		"prisma": "5.9.1",
 		"tsup": "8.0.1",
 		"tsx": "4.7.0",
 		"typescript": "5.3.3"
+	},
+	"dependencies": {
+		"@prisma/client": "5.9.1"
 	}
 }
