@@ -4,6 +4,8 @@
   "description": "A minimalistic TypeScript starter repository for building applications with Prisma and PostgreSQL.",
   "main": "index.js",
   "scripts": {
+    "start": "npx tsx watch src/app.ts",
+    "build": "npx tsup src --format cjs --dts --minify --clean --sourcemap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +17,8 @@
   "author": "Yan Avlis",
   "license": "MIT",
   "devDependencies": {
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }
 }
