@@ -1,0 +1,21 @@
+services:
+  database:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: prisma
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/tmp/data
+
+  backend:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: "postgresql://prisma:prisma@database:5432/prisma?schema=public"
+    depends_on:
+      - database
