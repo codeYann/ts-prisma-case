@@ -1,0 +1,20 @@
+{
+  "name": "ts-prisma-case",
+  "version": "1.0.0",
+  "description": "A minimalistic TypeScript starter repository for building applications with Prisma and PostgreSQL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "TypeScript",
+    "Prisma",
+    "Docker"
+  ],
+  "author": "Yan Avlis",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
