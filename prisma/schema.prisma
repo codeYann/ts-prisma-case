@@ -17,11 +17,13 @@ enum user_role {
 }
 
 model User {
-  id      String    @id @default(uuid())
-  email   String    @unique
-  name    String
-  profile user_role @default(USER)
-  posts   Post[]
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String
+  profile   user_role @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  posts     Post[]
 }
 
 model Post {
@@ -31,11 +33,15 @@ model Post {
   published  Boolean    @default(false)
   author     User       @relation(fields: [authorId], references: [id])
   authorId   String
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
   categories Category[]
 }
 
 model Category {
-  id    Int    @id @default(autoincrement())
-  name  String
-  posts Post[]
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
 }
