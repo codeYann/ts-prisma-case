@@ -3,19 +3,10 @@ services:
         image: postgres:16-alpine
         restart: always
         environment:
-            POSTGRES_DB: prisma
-            POSTGRES_USER: prisma
-            POSTGRES_PASSWORD: prisma
+            POSTGRES_DB: ${DB_NAME}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
         ports:
             - "5432:5432"
         volumes:
-            - /tmp/data:/var/lib/postgresql/data
-
-    backend:
-        build: .
-        ports:
-            - "4000:4000"
-        environment:
-            DATABASE_URL: "postgresql://prisma:prisma@database:5432/prisma?schema=public"
-        depends_on:
-            - database
+            - ./db:/var/lib/postgresql/data
