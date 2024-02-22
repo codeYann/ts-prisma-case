@@ -3,6 +3,7 @@ import IHttpServer from "../http/IHttpServer";
 import UserModel from "../model/Users";
 import UserRepository from "../repository/User";
 import UsersService from "../service/Users";
+
 export default class UsersController {
 	private readonly model = new UserModel();
 	private readonly repository = new UserRepository(this.model);
