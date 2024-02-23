@@ -16,6 +16,28 @@ export default class PostsModel {
 		}
 	}
 
+	async findAllFromUser(uuid: string): Promise<Partial<Post>[]> {
+		try {
+			const posts = await PostsModel.prisma.post.findMany({
+				select: {
+					title: true,
+					content: true,
+					published: true,
+					createdAt: true,
+				},
+				where: {
+					authorId: uuid,
+				},
+			});
+			return posts;
+		} catch (error) {
+			if (error instanceof Prisma.PrismaClientKnownRequestError) {
+				throw new Error(error.message);
+			}
+			throw error;
+		}
+	}
+
 	async findOne(id: string): Promise<Post> {
 		try {
 			const post = await PostsModel.prisma.post.findUnique({
