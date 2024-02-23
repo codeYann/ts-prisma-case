@@ -10,7 +10,7 @@ export default class UsersService<T> {
 			const users = await this.repository.getUsers();
 			return users;
 		} catch (error) {
-			throw new Error("An error occurred while fetching users");
+			throw error;
 		}
 	}
 
@@ -19,7 +19,7 @@ export default class UsersService<T> {
 			const newUser = await this.repository.storeUser(user);
 			return newUser;
 		} catch (error) {
-			throw new Error("An error occurred while creating user");
+			throw error;
 		}
 	}
 
@@ -28,7 +28,7 @@ export default class UsersService<T> {
 			const updatedUser = await this.repository.updateUser(id, user);
 			return updatedUser;
 		} catch (error) {
-			throw new Error("An error occurred while updating user");
+			throw error;
 		}
 	}
 
@@ -37,7 +37,7 @@ export default class UsersService<T> {
 			const deletedUser = await this.repository.deleteUser(id);
 			return deletedUser;
 		} catch (error) {
-			throw new Error("An error occurred while deleting user");
+			throw error;
 		}
 	}
 }
