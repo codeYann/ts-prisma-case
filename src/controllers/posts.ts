@@ -11,6 +11,7 @@ export default class PostsController {
 
 	constructor(server: IHttpServer) {
 		server.on("get", "/posts", [], this.getPosts.bind(this));
+		server.on("get", "/posts/:id", [], this.getPostsFromUser.bind(this));
 		server.on("post", "/posts", [], this.storePost.bind(this));
 		server.on("put", "/posts/:id", [], this.updatePost.bind(this));
 		server.on("delete", "/posts/:id", [], this.deletePost.bind(this));
@@ -20,6 +21,18 @@ export default class PostsController {
 		try {
 			const posts = await this.service.getPosts();
 			return res.status(200).json(posts);
+		} catch (error) {
+			next(error);
+		}
+	}
+
+	async getPostsFromUser(req: Request, res: Response, next: NextFunction) {
+		try {
+			const id = req.params.id;
+			if (id) {
+				const posts = await this.service.getPostsFromUser(id);
+				return res.status(200).json(posts);
+			}
 		} catch (error) {
 			next(error);
 		}
