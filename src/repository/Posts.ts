@@ -18,6 +18,15 @@ export default class PostRepository<T extends Post>
 		}
 	}
 
+	async getPostsFromUser(uuid: string): Promise<Partial<T>[]> {
+		try {
+			const posts = await this.model.findAllFromUser(uuid);
+			return posts as unknown as Partial<T>[];
+		} catch (error) {
+			throw error;
+		}
+	}
+
 	async storePost(post: T): Promise<T> {
 		try {
 			const newPost = await this.model.create(post);
